@@ -1,0 +1,13 @@
+SELECT p.id_product FROM product p WHERE EXISTS( select th.id_product From transaction_hire th where th.id_product<>p.id_product OR th.return_date is not null)
+
+SELECT p.id_product FROM product p  INNER JOIN transaction_hire th on th.id_product=p.id_product WHERE th.return_date is not null OR th.id_product =ANY(SELECT p.id_product from product p)
+
+SELECT p.id_product from product p WHERE not EXISTS (Select th.id_product FROM transaction_hire th WHERE th.id_product=p.id_product);
+
+SELECT p.id_product from product p WHERE p.id_film=13;
+SELECT p.id_product from product p WHERE not EXISTS (Select th.id_product FROM transaction_hire th WHERE th.id_product=p.id_product);
+
+SELECT th.id_product from transaction_hire th 
+where th.return_date is not null;
+
+SELECT th.id_product FROM transaction_hire th WHERE th.id_product IN (select p.id_product From product p WHERE p.id_film=12 and th.id_t_h <> ALL(SELECT th1.id_t_h from transaction_hire th1 WHERE th1.return_date is not null));

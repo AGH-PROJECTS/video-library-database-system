@@ -1,0 +1,76 @@
+Do sprawka:
+
+
+
+
+
+Zapytania grupuj¹ce:
+
+
+
+
+
+
+
+filter roku powstania filmu
+SELECT f.title as Tytu³, f.yop as Rok_produkcji, g.kind as Rodzaj,ac.kind as PEGI,d.surname as Re¿yser,c.name As Kraj FROM film f
+INNER JOIN genre g ON g.id_film =f.id_film
+INNER JOIN age_category ac ON ac.id_film=f.id_film
+INNER JOIN director d ON d.id_director=f.id_director
+INNER JOIN country_film cf ON cf.id_film=f.id_film
+INNER JOIN country c ON c.id_country=cf.id_country
+WHERE f.yop='2019';
+
+filter wg kategorii
+SELECT f.title as Tytu³, f.yop as Rok_produkcji, g.kind as Rodzaj,ac.kind as PEGI,d.surname as Re¿yser,c.name As Kraj FROM film f
+INNER JOIN genre g ON g.id_film =f.id_film
+INNER JOIN age_category ac ON ac.id_film=f.id_film
+INNER JOIN director d ON d.id_director=f.id_director
+INNER JOIN country_film cf ON cf.id_film=f.id_film
+INNER JOIN country c ON c.id_country=cf.id_country
+WHERE g.kind='Sci-Fi';
+
+filter wg kraju
+SELECT f.title as Tytu³, f.yop as Rok_produkcji, g.kind as Rodzaj,ac.kind as PEGI,d.surname as Re¿yser,c.name As Kraj FROM film f
+INNER JOIN genre g ON g.id_film =f.id_film
+INNER JOIN age_category ac ON ac.id_film=f.id_film
+INNER JOIN director d ON d.id_director=f.id_director
+INNER JOIN country_film cf ON cf.id_film=f.id_film
+INNER JOIN country c ON c.id_country=cf.id_country
+WHERE c.name='USA';
+
+filter wg rezysera
+SELECT f.title as Tytu³, f.yop as Rok_produkcji, g.kind as Rodzaj,ac.kind as PEGI,d.surname as Re¿yser,c.name As Kraj FROM film f
+INNER JOIN genre g ON g.id_film =f.id_film
+INNER JOIN age_category ac ON ac.id_film=f.id_film
+INNER JOIN director d ON d.id_director=f.id_director
+INNER JOIN country_film cf ON cf.id_film=f.id_film
+INNER JOIN country c ON c.id_country=cf.id_country
+WHERE d.surname='Russo';
+
+
+multi filter
+SELECT f.title as Tytu³, f.yop as Rok_produkcji, g.kind as Rodzaj,ac.kind as PEGI,d.surname as Re¿yser,c.name As Kraj FROM film f
+INNER JOIN genre g ON g.id_film =f.id_film
+INNER JOIN age_category ac ON ac.id_film=f.id_film
+INNER JOIN director d ON d.id_director=f.id_director
+INNER JOIN country_film cf ON cf.id_film=f.id_film
+INNER JOIN country c ON c.id_country=cf.id_country
+WHERE d.surname='Russo' and ac.kind='13+' and c.name='USA';
+
+SELECT f.title as Tytu³, f.yop as Rok_produkcji, g.kind as Rodzaj,ac.kind as PEGI,d.surname as Re¿yser,c.name As Kraj FROM film f
+INNER JOIN genre g ON g.id_film =f.id_film
+INNER JOIN age_category ac ON ac.id_film=f.id_film
+INNER JOIN director d ON d.id_director=f.id_director
+INNER JOIN country_film cf ON cf.id_film=f.id_film
+INNER JOIN country c ON c.id_country=cf.id_country
+WHERE f.yop>'1990' and ac.kind='13+' and c.name='USA';
+
+uzycie wszystkich dostepnych filtrow
+SELECT f.title as Tytu³, f.yop as Rok_produkcji, g.kind as Rodzaj,ac.kind as PEGI,d.surname as Re¿yser,c.name As Kraj FROM film f
+INNER JOIN genre g ON g.id_film =f.id_film
+INNER JOIN age_category ac ON ac.id_film=f.id_film
+INNER JOIN director d ON d.id_director=f.id_director
+INNER JOIN country_film cf ON cf.id_film=f.id_film
+INNER JOIN country c ON c.id_country=cf.id_country
+WHERE f.yop>'1990' and ac.kind='13+' and c.name='USA' and d.surname='Russo' and g.kind='Sci-Fi';
