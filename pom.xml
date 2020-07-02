@@ -10,7 +10,7 @@
 
     <properties>
         <jdk.version>1.8</jdk.version>
-        <mysql.driver.verison>8.0.11</mysql.driver.verison>
+        <mysql.driver.verison>8.0.16</mysql.driver.verison>
     </properties>
     <build>
         <plugins>
